@@ -3,6 +3,7 @@ package com.qualitestudios.artstroke
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
+import android.util.TypedValue
 import android.view.MotionEvent
 import android.view.View
 //creating a view
@@ -108,6 +109,13 @@ mDrawPaint!!.strokeWidth=mDrawPath!!.brushThickness
 invalidate()
 
         return true
+    }
+
+    fun setSizeForBrush(newSize:Float)
+    {
+        mBrushSize=TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,newSize,resources.displayMetrics)
+
+        mDrawPaint!!.strokeWidth=mBrushSize
     }
 
     //only be usable within drawing view nd use variable
