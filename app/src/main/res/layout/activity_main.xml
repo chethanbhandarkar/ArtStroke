@@ -59,6 +59,7 @@
                 android:layout_weight="1"
                 android:max="100"
                 android:progress="2"
+                android:scrollbars="horizontal"
                 android:thumb="@drawable/ic_adjust_black_24dp" />
         </LinearLayout>
     </LinearLayout>
