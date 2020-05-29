@@ -12,6 +12,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.05"
+        android:gravity="bottom|center"
         android:orientation="horizontal">
 
         <TextView
@@ -24,44 +25,74 @@
             android:textAlignment="center" />
     </LinearLayout>
 
-    <com.qualitestudios.artstroke.DrawingView
-        android:id="@+id/drawing_view"
-        android:layout_width="wrap_content"
+    <FrameLayout
+        android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".85"></com.qualitestudios.artstroke.DrawingView>
+        android:layout_weight="0.85" >
+
+        <ImageView
+            android:id="@+id/img_backimage"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <com.qualitestudios.artstroke.DrawingView
+            android:id="@+id/drawing_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"></com.qualitestudios.artstroke.DrawingView>
+
+        <SeekBar
+            android:id="@+id/brushSizeChange"
+            style="@style/Widget.AppCompat.SeekBar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|right"
+            android:layout_weight="1"
+            android:max="100"
+            android:progress="1"
+            android:scrollbars="horizontal"
+            android:thumb="@drawable/ic_adjust_black_24dp"
+            android:verticalScrollbarPosition="defaultPosition" />
+
+    </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.1"
+        android:gravity="center"
         android:orientation="horizontal"
         android:weightSum="1">
+
+        <Button
+            android:id="@+id/btn_undo"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="0.2"
+            android:background="@android:drawable/ic_menu_revert"
+            android:backgroundTint="@android:color/background_dark"
+            android:scaleX="0.5"
+            android:scaleY="0.5" />
 
         <Button
             android:id="@+id/ib_brush"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="0.2"
-            android:background="@android:drawable/btn_radio" />
+            android:background="@android:drawable/ic_menu_gallery"
+            android:backgroundTint="@android:color/background_dark"
+            android:scaleX="0.5"
+            android:scaleY="0.5" />
 
-        <LinearLayout
+        <Button
+            android:id="@+id/btn_redo"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="0.8"
-            android:gravity="center"
-            android:orientation="horizontal">
+            android:layout_weight="0.2"
+            android:background="@android:drawable/ic_menu_revert"
+            android:backgroundTint="@android:color/background_dark"
+            android:scaleX="-0.5"
+            android:scaleY="0.5" />
 
-            <SeekBar
-                android:id="@+id/brushSizeChange"
-                style="@style/Widget.AppCompat.SeekBar"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:max="100"
-                android:progress="2"
-                android:scrollbars="horizontal"
-                android:thumb="@drawable/ic_adjust_black_24dp" />
-        </LinearLayout>
     </LinearLayout>
 
 

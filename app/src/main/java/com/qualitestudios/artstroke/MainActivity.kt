@@ -1,17 +1,22 @@
 package com.qualitestudios.artstroke
 
+import android.app.Activity
 import android.app.Application
 import android.app.Dialog
 import android.content.Context
+import android.content.Intent
 import android.content.pm.PackageManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.MediaStore
+import android.view.View
 import android.view.WindowManager
 import android.widget.SeekBar
 import android.widget.SeekBar.*
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import kotlinx.android.synthetic.main.activity_backgroundselect.*
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.dialog_brush_size.*
 import java.util.jar.Manifest
@@ -37,38 +42,102 @@ class MainActivity : AppCompatActivity() {
         )
         ib_brush.setOnClickListener()
         {
+           // startActivity(Intent(this,Backgroundselect::class.java))
             if(isReadStorageAllowed())
             {
+                val changeIntent=Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI)
+                startActivityForResult(changeIntent,GALLERY)
+
+
+
                 //run or code to get image from allery
             }
-            else{
+            else {
                 requestStoragePermission()
             }
-           // showBrushSizeChooserDialog()
 
+              //  startActivity(Intent(this,Backgroundselect::class.java))
+
+                //run or code to get image from allery
+            }
+
+
+        btn_undo.setOnClickListener()
+        {
+drawing_view.onClickUndo()
         }
-        brushSizeChange.setOnSeekBarChangeListener(object : OnSeekBarChangeListener {
+        btn_redo.setOnClickListener()
+        {
+
+
+
+            drawing_view.onClickRedo()
+        }
+
+        brushSizeChange.setOnSeekBarChangeListener(object:OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 drawing_view.setSizeForBrush((progress).toFloat())
+
             }
 
             override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                Toast.makeText(applicationContext, "Size change", Toast.LENGTH_SHORT).show()
+                //Toast.makeText(applicationContext,"",Toast.LENGTH_SHORT).show()
+
             }
 
             override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                Toast.makeText(applicationContext, "Size changed", Toast.LENGTH_SHORT).show()
+              //  Toast.makeText(applicationContext,"",Toast.LENGTH_SHORT).show()
+
             }
 
 
         })
 
 
-    }
 
+
+
+        }
+
+
+
+
+
+override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+    super.onActivityResult(requestCode, resultCode, data)
+    if(resultCode== Activity.RESULT_OK)
+    {
+        if(requestCode== GALLERY)
+        {
+
+            try{
+
+
+                if(data!!.data!=null)
+                {
+                    img_backimage.visibility= View.VISIBLE
+                    img_backimage.setImageURI(data.data)
+                }
+                else
+                {Toast.makeText(this,"Error in image",Toast.LENGTH_SHORT).show()
+
+                }
+            }
+            catch(e:Exception){
+
+            }
+
+
+
+
+        }
+
+    }
+}
 
 
     private fun requestStoragePermission() {
+
         if (ActivityCompat.shouldShowRequestPermissionRationale(
                 this,
                 arrayOf(
@@ -116,6 +185,7 @@ class MainActivity : AppCompatActivity() {
     }
     companion object {
         private const val STORAGE_PERMISSION_CODE = 1
+        private const val GALLERY=2
     }
 
 
