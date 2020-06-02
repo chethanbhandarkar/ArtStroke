@@ -28,70 +28,115 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.85" >
+        android:layout_weight="0.8">
 
-        <ImageView
-            android:id="@+id/img_backimage"
+        <FrameLayout
+            android:id="@+id/id_frame"
             android:layout_width="match_parent"
-            android:layout_height="match_parent" />
+            android:layout_height="0dp">
 
-        <com.qualitestudios.artstroke.DrawingView
-            android:id="@+id/drawing_view"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"></com.qualitestudios.artstroke.DrawingView>
+            <ImageView
+                android:id="@+id/img_backimage"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
 
-        <SeekBar
-            android:id="@+id/brushSizeChange"
-            style="@style/Widget.AppCompat.SeekBar"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|right"
-            android:layout_weight="1"
-            android:max="100"
-            android:progress="1"
-            android:scrollbars="horizontal"
-            android:thumb="@drawable/ic_adjust_black_24dp"
-            android:verticalScrollbarPosition="defaultPosition" />
+            <com.qualitestudios.artstroke.DrawingView
+                android:id="@+id/drawing_view"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"></com.qualitestudios.artstroke.DrawingView>
+
+        </FrameLayout>
 
     </FrameLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="0.1"
+        android:layout_weight="0.15"
         android:gravity="center"
-        android:orientation="horizontal"
+        android:orientation="vertical"
         android:weightSum="1">
 
-        <Button
-            android:id="@+id/btn_undo"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.2"
-            android:background="@android:drawable/ic_menu_revert"
-            android:backgroundTint="@android:color/background_dark"
-            android:scaleX="0.5"
-            android:scaleY="0.5" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.4"
+            android:orientation="horizontal">
 
-        <Button
-            android:id="@+id/ib_brush"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.2"
-            android:background="@android:drawable/ic_menu_gallery"
-            android:backgroundTint="@android:color/background_dark"
-            android:scaleX="0.5"
-            android:scaleY="0.5" />
+            <SeekBar
+                android:id="@+id/brushSizeChange"
+                style="@android:style/Widget.Material.SeekBar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="bottom|right"
+                android:layout_weight="1"
+                android:max="100"
+                android:progress="20"
+                android:scrollbars="horizontal"
+                android:thumb="@drawable/medium"
+                android:thumbTint="#946900FF"
+                android:verticalScrollbarPosition="defaultPosition" />
+        </LinearLayout>
 
-        <Button
-            android:id="@+id/btn_redo"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="0.2"
-            android:background="@android:drawable/ic_menu_revert"
-            android:backgroundTint="@android:color/background_dark"
-            android:scaleX="-0.5"
-            android:scaleY="0.5" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="40dp"
+            android:layout_weight="0.6"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:weightSum="1">
+
+            <Button
+                android:id="@+id/btn_undo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:background="@android:drawable/ic_menu_revert"
+                android:backgroundTint="@android:color/background_dark"
+                android:scaleX="0.5"
+                android:scaleY="1.3" />
+
+            <Button
+                android:id="@+id/btn_redo"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:background="@android:drawable/ic_menu_revert"
+                android:backgroundTint="@android:color/background_dark"
+                android:scaleX="-0.5"
+                android:scaleY="1.3" />
+
+            <Button
+                android:id="@+id/ib_color"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:background="?android:attr/textSelectHandleRight"
+                android:backgroundTint="@android:color/holo_green_light"
+                android:scaleX="0.5"
+                android:scaleY="0.6" />
+
+            <Button
+                android:id="@+id/ib_brush"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:background="@android:drawable/ic_menu_gallery"
+                android:backgroundTint="@android:color/background_dark"
+                android:scaleX="0.5"
+                android:scaleY="1.3" />
+
+            <Button
+                android:id="@+id/btn_save"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="0.2"
+                android:background="@android:drawable/ic_menu_save"
+                android:backgroundTint="@android:color/background_dark"
+                android:scaleX="0.5"
+                android:scaleY="2" />
+        </LinearLayout>
 
     </LinearLayout>
 

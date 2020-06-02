@@ -17,7 +17,7 @@ class DrawingView(context: Context, attrs: AttributeSet) : View(context,attrs){
     private var mDrawPaint: Paint?=null
     private var mCanvasPaint:Paint?=null
     private var mBrushSize:Float=0.toFloat()
-    private var color= Color.BLACK
+     var color= Color.BLACK
     private val mPaths=ArrayList<CustomPath>()
     private val uPaths=ArrayList<CustomPath>()
 
@@ -135,6 +135,12 @@ invalidate()
         mBrushSize=TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,newSize,resources.displayMetrics)
 
         mDrawPaint!!.strokeWidth=mBrushSize
+
+
+    }
+    fun setColorBrush(color:Int)
+    {
+        mDrawPaint!!.color=color
     }
 
     //only be usable within drawing view nd use variable
